@@ -1,0 +1,16 @@
+# pkl files
+*.pkl
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Checkpoint files
+*.h5
+
+# Keras files
+*.keras
+
+# Txt files
+*.txt
