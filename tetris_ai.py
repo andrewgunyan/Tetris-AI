@@ -767,4 +767,66 @@ def main():
 
 if __name__ == "__main__":
     multiprocessing.freeze_support()
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(
+        description=(
+            "tetris_ai.py — run your Tetris program in different modes.\n\n"
+            "Modes:\n"
+            "  human_player        start the game for a human to play\n"
+            "  ai_player_training  train the AI (uses OUT_START as the starting level)\n"
+            "  ai_player_watching  load a saved model and let the AI play (GUI shown)"
+        ),
+        epilog=(
+            "Examples:\n"
+            "  python tetris_ai.py                     # run with defaults (ai_player_watching)\n"
+            "  python tetris_ai.py --mode ai_player_watching --out_start 5\n"
+            "  python tetris_ai.py --mode ai_player_training --out_start 2 --outer_max 20\n"
+        ),
+        formatter_class=argparse.RawTextHelpFormatter,
+    )
+
+    parser.add_argument(
+        "--mode",
+        choices=["human_player", "ai_player_training", "ai_player_watching"],
+        default="ai_player_watching",
+        help="Select program mode. Default: %(default)s",
+    )
+
+    parser.add_argument(
+        "--out_start",
+        type=int,
+        default=0,
+        help="Integer training level / OUT_START used when training or watching. Default: %(default)s",
+        metavar="N",
+    )
+
+    parser.add_argument(
+        "--outer_max",
+        type=int,
+        default=10,
+        help="OUTER_MAX (only used for training). Default: %(default)s",
+        metavar="N",
+    )
+
+    parser.add_argument(
+        "-V", "--version",
+        action="version",
+        version="tetris_ai 1.0",
+        help="Show program version and exit."
+    )
+
+    parser.add_argument(
+        "-help",
+        action="help",
+        help="show this help message and exit"
+    )
+
+    args = parser.parse_args()
+
+    MODE = args.mode
+    OUT_START = args.out_start
+    OUTER_MAX = args.outer_max
+
     main()
