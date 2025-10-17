@@ -117,9 +117,15 @@ class SimpleAIGUI(QWidget):
             elif training_level >= 3 and training_level <= 7:
                 out_start = 3 if training_level < 5 else 4
             elif training_level > 7 and training_level < 10:
+                out_start = 5
+            elif training_level == 10:
                 out_start = 6
+            elif training_level == 11 or training_level == 12:
+                out_start == 7
+            elif training_level == 13 or training_level == 14:
+                out_start == 8
             else:
-                out_start = training_level
+                out_start == 9
 
             self.launch_tetris_ai(mode="ai_player_watching", out_start=out_start)
         except Exception as e:
