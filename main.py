@@ -70,12 +70,13 @@ class SimpleAIGUI(QWidget):
         self.main_layout.addStretch()
 
     def _start_training(self, value):
+        # For actual training, refer to the readme
         self.training_level = int(value)
 
         if self.training_level == 0:
             duration_sec = float(.75) / 2.0
         else:    
-            duration_sec = float(self.training_level) / 2.0
+            duration_sec = float(self.training_level) / 10.0
         interval_ms = 50
         total_steps = max(1, int(duration_sec * 1000 / interval_ms))
 
@@ -112,6 +113,7 @@ class SimpleAIGUI(QWidget):
 
     def watch_ai_play(self, training_level):
         try:
+            out_start = 0
             if training_level < 3:
                 out_start = training_level
             elif training_level >= 3 and training_level <= 7:
@@ -121,11 +123,11 @@ class SimpleAIGUI(QWidget):
             elif training_level == 10:
                 out_start = 6
             elif training_level == 11 or training_level == 12:
-                out_start == 7
+                out_start = 7
             elif training_level == 13 or training_level == 14:
-                out_start == 8
+                out_start = 8
             else:
-                out_start == 9
+                out_start = 9
 
             self.launch_tetris_ai(mode="ai_player_watching", out_start=out_start)
         except Exception as e:
