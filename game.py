@@ -656,12 +656,18 @@ class Game:
         return self.get_state_input(self.current_state), add_score, done, success
 
     def render(self):
+        if self.gui is None:
+            return
         if self.gui is not None:
             self.update_gui()
             self.gui.redraw()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    pass
+                    pygame.quit()
+                    sys.exit(0)
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit(0)
 
     def restart(self, height=None):
         if height is None:

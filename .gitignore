@@ -10,7 +10,7 @@ __pycache__/
 *.h5
 
 # Keras files
-*.keras
+# *.keras
 
 # Txt files
 *.txt
