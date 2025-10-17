@@ -5,7 +5,7 @@ STATE_INPUT = 'short'
 SEARCH = True
 T_SPIN_MARK = True
 OUTER_MAX = 1
-CPU_MAX = 6
+CPU_MAX = 2
 GAME_TYPE = 'regular'
 
 FOLDER_NAME = './tetris_regular_cnn_v1_oct_27/'
