@@ -53,7 +53,7 @@ class SimpleAIGUI(QWidget):
         spin.setRange(0, 15)
         spin.setValue(self.training_level)
 
-        start_btn = QPushButton("Start training")
+        start_btn = QPushButton("Start Training!")
         back_btn = QPushButton("Back")
 
         start_btn.clicked.connect(lambda: self._start_training(spin.value()))
